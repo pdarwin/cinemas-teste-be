@@ -1,4 +1,4 @@
-package uma.requalificar.empteste.model;
+package uma.requalificar.cinemas.model;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "Empresa")
-public class Empresa
+@Table (name = "Cinema")
+public class Cinema
 {
 	
 	@Id
@@ -27,8 +27,8 @@ public class Empresa
 	private String imagem;
 	
 	
-	@OneToMany (mappedBy = "empresa")
-	private List<Pessoa> pessoas;
+	@OneToMany (mappedBy = "cinema")
+	private List<Filme> filmes;
 
 	
 	/**
@@ -77,20 +77,20 @@ public class Empresa
 
 	
 	/**
-	 * @return the pessoas
+	 * @return the filmes
 	 */
-	public List<Pessoa> getPessoas ()
+	public List<Filme> getFilmes ()
 	{
-		return pessoas;
+		return filmes;
 	}
 
 	
 	/**
-	 * @param pessoas the pessoas to set
+	 * @param filmes the filmes to set
 	 */
-	public void setPessoas (List<Pessoa> pessoas)
+	public void setFilmes (List<Filme> filmes)
 	{
-		this.pessoas = pessoas;
+		this.filmes = filmes;
 	}
 
 

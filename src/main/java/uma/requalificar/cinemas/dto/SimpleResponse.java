@@ -1,4 +1,4 @@
-package uma.requalificar.empteste.dto;
+package uma.requalificar.cinemas.dto;
 
 public class SimpleResponse
 {

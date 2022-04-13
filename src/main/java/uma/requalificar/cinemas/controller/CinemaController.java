@@ -1,4 +1,4 @@
-package uma.requalificar.empteste.controller;
+package uma.requalificar.cinemas.controller;
 
 import java.util.List;
 
@@ -13,49 +13,49 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import uma.requalificar.empteste.dto.ListaResposta;
-import uma.requalificar.empteste.dto.SimpleResponse;
-import uma.requalificar.empteste.model.Empresa;
-import uma.requalificar.empteste.service.EmpresaService;
+import uma.requalificar.cinemas.dto.ListaResposta;
+import uma.requalificar.cinemas.dto.SimpleResponse;
+import uma.requalificar.cinemas.model.Cinema;
+import uma.requalificar.cinemas.service.CinemaService;
 
 @RestController
 @CrossOrigin
-public class EmpresaController {
-	private final EmpresaService empresaService;
+public class CinemaController {
+	private final CinemaService cinemaService;
 
 	@Autowired
-	public EmpresaController(EmpresaService empresaService) {
-		this.empresaService = empresaService;
+	public CinemaController(CinemaService cinemaService) {
+		this.cinemaService = cinemaService;
 	}
 
-	@GetMapping("/getEmpresas")
+	@GetMapping("/getAllCinemas")
 	@CrossOrigin
-	public List<Empresa> getEmpresas() {
-		return empresaService.getEmpresas();
+	public List<Cinema> getCinemas() {
+		return cinemaService.getCinemas();
 	}
 
-	@PostMapping("/addEmpresa")
+	@PostMapping("/addCinema")
 	@CrossOrigin
-	public ResponseEntity<ListaResposta> addEmpresa(@RequestBody Empresa empresa) {
+	public ResponseEntity<ListaResposta> addCinema(@RequestBody Cinema cinema) {
 
 		ListaResposta listaResposta = new ListaResposta();
 
-		if (empresa.getId() != null) {
+		if (cinema.getId() != null) {
 			listaResposta.addMsg("Ao adicionar um item, o ID tem de ser nulo.");
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(listaResposta);
 		}
 
-		if ((empresa.getNome() == null)) {
+		if ((cinema.getNome() == null)) {
 			listaResposta.addMsg("Nome nulo.");
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(listaResposta);
 		}
 
-		if ((empresa.getMorada() == null)) {
+		if ((cinema.getMorada() == null)) {
 			listaResposta.addMsg("Morada nula.");
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(listaResposta);
 		}
 
-		listaResposta = empresaService.addEmpresa(empresa);
+		listaResposta = cinemaService.addCinema(cinema);
 
 		if (!listaResposta.isStatusOk()) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(listaResposta);
@@ -66,10 +66,10 @@ public class EmpresaController {
 	}
 
 	@CrossOrigin
-	@DeleteMapping("/removeEmpresa/{id}")
-	public ResponseEntity<SimpleResponse> removeEmpresa(@PathVariable String id) {
+	@DeleteMapping("/removeCinema/{id}")
+	public ResponseEntity<SimpleResponse> removeCinema(@PathVariable String id) {
 
-		ListaResposta listaResposta = empresaService.removeEmpresa(id);
+		ListaResposta listaResposta = cinemaService.removeCinema(id);
 
 		if (!listaResposta.isStatusOk()) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(listaResposta);
@@ -82,10 +82,10 @@ public class EmpresaController {
 	/*
 	 * @CrossOrigin
 	 * 
-	 * @PutMapping ("/updateEmpresa/{id}") public ResponseEntity<SimpleResponse>
-	 * updateEmpresa (@PathVariable String id) {
+	 * @PutMapping ("/updateCinema/{id}") public ResponseEntity<SimpleResponse>
+	 * updateCinema (@PathVariable String id) {
 	 * 
-	 * ListaResposta listaResposta = empresaService.updateEmpresa (id);
+	 * ListaResposta listaResposta = cinemaService.updateCinema (id);
 	 * 
 	 * if (!listaResposta.isStatusOk() ) { return ResponseEntity.status
 	 * (HttpStatus.BAD_REQUEST).body (listaResposta); } else { return

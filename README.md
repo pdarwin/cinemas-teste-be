@@ -13,7 +13,7 @@ __Grupo 8__
 
 ## Requisitos
 
-__1.1.__	O sistema deve permitir o registo pela aplicação de dois utilizadores: Salario e Funcionário;
+__1.1.__	O sistema deve permitir o registo pela aplicação de dois utilizadores: Ator e Funcionário;
 
 
 __1.2.__ Após o registo, ambos os utilizadores deveram receber uma validação por email;

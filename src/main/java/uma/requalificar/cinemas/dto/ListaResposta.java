@@ -1,4 +1,4 @@
-package uma.requalificar.empteste.dto;
+package uma.requalificar.cinemas.dto;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,14 +10,14 @@ public class ListaResposta extends SimpleResponse {
 	private String newUsername;
 
 	/**
-	 * @return the pessoas
+	 * @return the filmes
 	 */
 	public List<?> getLista() {
 		return lista;
 	}
 
 	/**
-	 * @param pessoas the pessoas to set
+	 * @param filmes the filmes to set
 	 */
 	public void setLista(List<?> lista) {
 		this.lista = lista;
